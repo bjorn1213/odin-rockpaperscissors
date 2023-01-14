@@ -38,3 +38,29 @@ function playRound(playerSelection, computerSelection=getComputerChoice()){
 
     return roundResult;
 }
+
+function getPlayerChoice(){
+    let validChoice = false;
+    let choice = '';
+
+    while (!validChoice){
+        choice = prompt('Pick from rock, paper, or scissors.');
+        choice = choice.toLowerCase();
+
+        if (choice != 'scissors' && choice != 'rock' && choice != 'paper'){
+            validChoice = false;
+        } else {
+            validChoice = true;
+        }
+    }
+
+    return choice;
+}
+
+function playGame(roundCount=5){
+    let roundResult;
+    for (let round = 0; round < roundCount; round++){
+        roundResult = playRound(getPlayerChoice(), getComputerChoice());
+        console.log(roundResult);
+    }
+}
